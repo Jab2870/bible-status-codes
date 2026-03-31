@@ -1,0 +1,15 @@
+baseURL = "https://http.bible/"
+languageCode = "en-us"
+title = "HTTP Bible"
+
+[outputs]
+  home = ["HTML"]
+
+[params]
+  githubRepo = "https://github.com/example/http-bible"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        title = true

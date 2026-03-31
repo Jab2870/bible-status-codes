@@ -1,0 +1,30 @@
+{{/* Content adapter for HTTP status codes */}}
+{{ $data := slice }}
+{{ with os.ReadFile "data/status-codes.yaml" }}
+  {{ $data = . | transform.Unmarshal }}
+{{ end }}
+
+{{ $sortedData := sort $data "code" "asc" }}
+
+{{ range $sortedData }}
+  {{ $code := .code }}
+  {{ $message := .message }}
+  {{ $verses := .verses }}
+  {{ $justification := .justification }}
+  
+  {{ $firstVerse := index $verses 0 }}
+  {{ $verse := $firstVerse.text }}
+  {{ $reference := $firstVerse.reference }}
+  
+  {{ $content := printf "# %s %s\n\n%s\n\n— %s (BSB)" $code $message $verse $reference }}
+  {{ $contentDict := dict "mediaType" "text/markdown" "value" $content }}
+  {{ $params := dict "code" $code "message" $message "verse" $verse "reference" $reference "verses" $verses "justification" $justification }}
+  {{ $page := dict
+    "content" $contentDict
+    "kind" "page"
+    "params" $params
+    "path" (printf "%03d" $code)
+    "title" (printf "%s %s" $code $message)
+  }}
+  {{ $.AddPage $page }}
+{{ end }}

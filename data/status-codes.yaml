@@ -1,0 +1,216 @@
+- code: 100
+  message: Continue
+  verses:
+  - reference: Colossians 2:6
+    text: Therefore, just as you have received Christ Jesus as Lord, continue to walk in Him,
+    justification: Continue to walk in Him - continue
+  - reference: Romans 12:12
+    text: Be joyful in hope, patient in affliction, persistent in prayer.
+    justification: Continue in prayer - persistent in prayer
+- code: 101
+  message: Switching Protocols
+- code: 102
+  message: Processing
+  verses:
+  - reference: Philippians 1:6
+    text: Being confident of this, that He who began a good work in you will carry
+      it on to completion until the day of Christ Jesus.
+- code: 103
+  message: Early Hints
+- code: 200
+  message: OK
+  verses:
+  - reference: 1 John 3:22
+    text: and we will receive from Him whatever we ask, because we keep His commandments and do what is pleasing in His sight.
+- code: 201
+  message: Created
+  verses:
+  - reference: Genesis 1:31
+    text: And God looked upon all that He had made, and indeed, it was very good.
+- code: 202
+  message: Accepted
+  verses:
+  - reference: Romans 5:8
+    text: "But God proves His love for us in this: While we were still sinners, Christ died for us."
+- code: 203
+  message: Non-Authoritative Information
+  verses:
+    - reference: Galatians 1:8-9
+      text: But even if we or an angel from heaven should preach a gospel contrary to the one we preached to you, let him be under a curse!
+- code: 204
+  message: No Content
+  verses:
+  - reference: Philippians 4:19
+    text: And my God will supply every need of yours according to His glorious riches
+      in Christ Jesus.
+- code: 205
+  message: Reset Content
+- code: 206
+  message: Partial Content
+- code: 300
+  message: Multiple Choices
+  verses:
+  - reference: Matthew 5:37
+    text: Simply let your 'Yes' be 'Yes,' and your 'No,' 'No.' Anything more comes
+      from the evil one.
+- code: 301
+  message: Moved Permanently
+  verses:
+  - reference: Genesis 12:1
+    text: Then the LORD said to Abram, “Leave your country, your kindred, and your father’s household, and go to the land I will show you.
+- code: 302
+  message: Found
+  verses:
+  - reference: Jeremiah 29:13
+    text: You will seek Me and find Me when you search for Me with all your heart.
+- code: 303
+  message: See Other
+- code: 304
+  message: Not Modified
+  verses:
+  - reference: Hebrews 13:8
+    text: Jesus Christ is the same yesterday and today and forever.
+- code: 305
+  message: Use Proxy
+- code: 307
+  message: Temporary Redirect
+  verses:
+- code: 308
+  message: Permanent Redirect
+  verses:
+  - reference: Psalm 33:11
+    text: The counsel of the LORD stands forever, the purposes of His heart to all generations.
+- code: 400
+  message: Bad Request
+- code: 401
+  message: Unauthorized
+  verses:
+  - reference: John 3:3
+    text: Jesus replied, “Truly, truly, I tell you, no one can see the kingdom of God unless he is born again.”
+- code: 402
+  message: Payment Required
+  verses:
+  - reference: Matthew 6:24
+    text: 'No one can serve two masters: Either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve both God and money.'
+- code: 403
+  message: Forbidden
+- code: 404
+  message: Not Found
+  verses:
+  - reference: Luke 19:10
+    text: For the Son of Man came to seek and to save the lost.
+- code: 405
+  message: Method Not Allowed
+  verses:
+    - text: For this is the love of God, that we keep His commandments. And His commandments are not burdensome,
+      reference: 1 John 5:3
+- code: 406
+  message: Not Acceptable
+  verses:
+- code: 407
+  message: Proxy Authentication Required
+  verses:
+- code: 408
+  message: Request Timeout
+  verses:
+- code: 409
+  message: Conflict
+  verses:
+- code: 410
+  message: Gone
+  verses:
+  - reference: John 20:2
+    text: So she came running to Simon Peter and the other disciple, the one whom
+      Jesus loved. 'They have taken the Lord out of the tomb,' she said, 'and we do
+      not know where they have put Him!'
+    justification: They have taken the Lord - He is gone
+
+
+
+
+
+
+
+
+- code: 411
+  message: Length Required
+- code: 412
+  message: Precondition Failed
+  verses:
+- code: 413
+  message: Payload Too Large
+  verses:
+- code: 414
+  message: URI Too Long
+  verses:
+- code: 415
+  message: Unsupported Media Type
+- code: 416
+  message: Range Not Satisfiable
+- code: 417
+  message: Expectation Failed
+  verses:
+- code: 418
+  message: I'm a Teapot
+  verses:
+- code: 421
+  message: Misdirected Request
+  verses:
+- code: 422
+  message: Unprocessable Entity
+  verses:
+- code: 423
+  message: Locked
+  verses:
+- code: 424
+  message: Failed Dependency
+  verses:
+- code: 425
+  message: Too Early
+- code: 429
+  message: Too Many Requests
+  verses:
+
+- code: 426
+  message: Upgrade Required
+- code: 428
+  message: Precondition Required
+- code: 431
+  message: Request Header Fields Too Large
+- code: 451
+  message: Unavailable For Legal Reasons
+  verses:
+  - reference: Matthew 5:17
+    text: Do not think that I have come to abolish the Law or the Prophets. I have not come to abolish them, but to fulfill them.
+- code: 500
+  message: Internal Server Error
+  verses:
+- code: 501
+  message: Not Implemented
+  verses:
+- code: 502
+  message: Bad Gateway
+  verses:
+  - reference: Matthew 7:13
+    text: Enter through the narrow gate. For wide is the gate and broad is the way that leads to destruction, and many enter through it.
+- code: 503
+  message: Service Unavailable
+  verses:
+- code: 504
+  message: Gateway Timeout
+  verses:
+- code: 506
+  message: Variant Also Negotiates
+  verses:
+- code: 507
+  message: Insufficient Storage
+  verses:
+- code: 508
+  message: Loop Detected
+  verses:
+- code: 510
+  message: Not Extended
+  verses:
+- code: 511
+  message: Network Authentication Required
+  verses:
