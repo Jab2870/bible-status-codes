@@ -29,11 +29,15 @@
             padding: 1rem;
             background: #f5f5f5;
             border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .status-list a {
             text-decoration: none;
             color: inherit;
             display: block;
+            width: 100%;
         }
         .status-list a:hover {
             background: #eee;
@@ -41,9 +45,22 @@
         .code {
             font-size: 1.5rem;
             font-weight: bold;
+            min-width: 3rem;
         }
         .message {
             color: #666;
+            flex-grow: 1;
+            margin: 0 1rem;
+        }
+        .verse-preview {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+        .contribute {
+            font-size: 0.85rem;
+            color: #0066cc;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -51,15 +68,21 @@
     <h1>HTTP Bible</h1>
     <p class="subtitle">Bible verses for every HTTP status code (BSB translation)</p>
     
-    <ul class="status-list">
-        {{ range .Site.RegularPages }}
-        <li>
-            <a href="{{ .RelPermalink }}">
-                <span class="code">{{ .Params.code }}</span>
-                <span class="message">{{ .Params.message }}</span>
-            </a>
-        </li>
-        {{ end }}
-    </ul>
+<ul class="status-list">
+    {{ range .Site.RegularPages }}
+    <li>
+        <a href="{{ .RelPermalink }}">
+            <span class="code">{{ .Params.code }}</span>
+            <span class="message">{{ .Params.message }}</span>
+            {{ $firstVerse := index .Params.verses 0 }}
+            {{ if $firstVerse }}
+                <span class="verse-preview">"{{ $firstVerse.text }}"</span>
+            {{ else }}
+                <span class="contribute">Contribute</span>
+            {{ end }}
+        </a>
+    </li>
+    {{ end }}
+</ul>
 </body>
 </html>
