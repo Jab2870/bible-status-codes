@@ -6,7 +6,7 @@ title = "HTTP Bible"
   home = ["HTML"]
 
 [params]
-  githubRepo = "https://github.com/example/http-bible"
+  githubRepo = "https://github.com/Jab2870/bible-status-codes"
 
 [markup]
   [markup.goldmark]
