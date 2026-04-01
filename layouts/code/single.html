@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Params.code }} {{ .Params.message }} | HTTP Bible</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .status-code {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+        .message {
+            font-size: 2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .justification {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: #e8f4f8;
+            border-left: 4px solid #4a90d9;
+            border-radius: 4px;
+        }
+        .verse-box {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        .verse-box .justification {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 0.75rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #ddd;
+        }
+        .verse {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .reference {
+            font-weight: bold;
+            color: #333;
+        }
+        nav {
+            margin-top: 2rem;
+        }
+        nav a {
+            margin-right: 1rem;
+        }
+        .contribute {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fff3cd;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="status-code">{{ .Params.code }}</h1>
+    <p class="message">{{ .Params.message }}</p>
+    
+    {{ $verses := .Params.verses }}
+    {{ range $verses }}
+    <div class="verse-box">
+        <p class="verse">"{{ .text }}"</p>
+        <p class="reference">— {{ .reference }} (BSB)</p>
+        {{ with .justification }}
+        <p class="justification">{{ . }}</p>
+        {{ end }}
+    </div>
+    {{ end }}
+    
+    {{ if or (not $verses) (eq (len $verses) 0) }}
+    <p class="contribute">No verse yet. <a href="{{ .Site.Params.githubRepo }}">Contribute one!</a></p>
+    {{ end }}
+    
+    <nav>
+        {{ $currentCode := .Params.code }}
+{{ $pages := where .Site.RegularPages "Section" "code" }}
+{{ $sorted := sort $pages "Params.code" "asc" }}
+{{ range $index, $page := $sorted }}
+  {{ if eq $page.Params.code $currentCode }}
+    {{ if gt $index 0 }}
+      {{ with index $sorted (sub $index 1) }}
+      <a href="{{ .RelPermalink }}">← {{ .Params.code }} {{ .Params.message }}</a>
+      {{ end }}
+    {{ end }}
+    <a href="../..">All Status Codes</a>
+    {{ if lt $index (sub (len $sorted) 1) }}
+      {{ with index $sorted (add $index 1) }}
+      <a href="{{ .RelPermalink }}">{{ .Params.code }} {{ .Params.message }} →</a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+    </nav>
+    <script>
+        document.addEventListener('keydown', function(e) {
+            {{ $currentCode := .Params.code }}
+            {{ $pages := where .Site.RegularPages "Section" "code" }}
+            {{ $sorted := sort $pages "Params.code" "asc" }}
+            {{ range $index, $page := $sorted }}
+              {{ if eq $page.Params.code $currentCode }}
+                {{ if gt $index 0 }}
+                  {{ with index $sorted (sub $index 1) }}
+                    var prevUrl = "{{ .RelPermalink }}";
+                  {{ end }}
+                {{ end }}
+                {{ if lt $index (sub (len $sorted) 1) }}
+                  {{ with index $sorted (add $index 1) }}
+                    var nextUrl = "{{ .RelPermalink }}";
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            if (e.key === 'ArrowLeft' && typeof prevUrl !== 'undefined') {
+                window.location.href = prevUrl;
+            } else if (e.key === 'ArrowRight' && typeof nextUrl !== 'undefined') {
+                window.location.href = nextUrl;
+            }
+        });
+    </script>
+</body>
+</html>

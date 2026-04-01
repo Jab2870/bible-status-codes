@@ -59,14 +59,15 @@
         }
         .contribute {
             font-size: 0.85rem;
-            color: #0066cc;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <h1>HTTP Bible</h1>
-    <p class="subtitle">Bible verses for every HTTP status code (BSB translation)</p>
+    <p class="subtitle">Bible verses for HTTP status codes (<a href="/bsb-translation/">BSB translation</a>)</p>
+
+    <p class="contribute"><a href="{{ .Site.Params.githubRepo }}">Please
+		contribute</a> if you can think of any verses for the missing codes.</p>
     
 <ul class="status-list">
     {{ range .Site.RegularPages }}
