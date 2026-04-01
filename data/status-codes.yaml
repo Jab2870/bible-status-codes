@@ -9,6 +9,9 @@
     justification: Continue in prayer - persistent in prayer
 - code: 101
   message: Switching Protocols
+  verses:
+  - reference: Luke 22:20
+    text: "In the same way, after supper He took the cup, saying, 'This cup is the new covenant in My blood, which is poured out for you.'"
 - code: 102
   message: Processing
   verses:
