@@ -110,30 +110,50 @@
 {{ end }}
     </nav>
     <script>
+		{{ range $index, $page := $sorted }}
+		  {{ if eq $page.Params.code $currentCode }}
+			{{ if gt $index 0 }}
+			  {{ with index $sorted (sub $index 1) }}
+				var prevUrl = "{{ .RelPermalink }}";
+			  {{ end }}
+			{{ end }}
+			{{ if lt $index (sub (len $sorted) 1) }}
+			  {{ with index $sorted (add $index 1) }}
+				var nextUrl = "{{ .RelPermalink }}";
+			  {{ end }}
+			{{ end }}
+		  {{ end }}
+		{{ end }}
         document.addEventListener('keydown', function(e) {
             {{ $currentCode := .Params.code }}
             {{ $pages := where .Site.RegularPages "Section" "code" }}
             {{ $sorted := sort $pages "Params.code" "asc" }}
-            {{ range $index, $page := $sorted }}
-              {{ if eq $page.Params.code $currentCode }}
-                {{ if gt $index 0 }}
-                  {{ with index $sorted (sub $index 1) }}
-                    var prevUrl = "{{ .RelPermalink }}";
-                  {{ end }}
-                {{ end }}
-                {{ if lt $index (sub (len $sorted) 1) }}
-                  {{ with index $sorted (add $index 1) }}
-                    var nextUrl = "{{ .RelPermalink }}";
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
             if (e.key === 'ArrowLeft' && typeof prevUrl !== 'undefined') {
                 window.location.href = prevUrl;
             } else if (e.key === 'ArrowRight' && typeof nextUrl !== 'undefined') {
                 window.location.href = nextUrl;
             }
         });
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', function(e) {
+			console.log("touchstart")
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        document.addEventListener('touchend', function(e) {
+			console.log("touchend")
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50 && typeof nextUrl !== 'undefined') {
+                window.location.href = nextUrl;
+            }
+            if (touchEndX > touchStartX + 50 && typeof prevUrl !== 'undefined') {
+                window.location.href = prevUrl;
+            }
+        }
     </script>
 </body>
 </html>
