@@ -128,6 +128,8 @@
 - code: 409
   message: Conflict
   verses:
+  - reference: Matthew 18:8
+    text: "If your hand or your foot causes you to sin, cut it off and throw it away. It is better for you to enter life crippled or lame than to have two hands and two feet and be thrown into the eternal fire."
 - code: 410
   message: Gone
   verses:
@@ -159,6 +161,9 @@
   verses:
 - code: 415
   message: Unsupported Media Type
+  verses:
+  - reference: Leviticus 19:28
+    text: "You must not make any cuts in your bodies for the dead or put tattoo marks on yourselves. I am the LORD."
 - code: 416
   message: Range Not Satisfiable
 - code: 417
