@@ -48,6 +48,9 @@
       in Christ Jesus.
 - code: 205
   message: Reset Content
+  verses:
+  - reference: Psalm 51:10
+    text: Create in me a clean heart, O God, and renew a right spirit within me.
 - code: 206
   message: Partial Content
 - code: 300
