@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Params.code }} {{ .Params.message }} | HTTP Bible</title>
+    <meta property="og:title" content="{{ .Params.code }} {{ .Params.message }} | HTTP Bible">
+    <meta property="og:description" content="{{ with index .Params.verses 0 }}{{ .text }}{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ .Params.code }} {{ .Params.message }} | HTTP Bible">
+    <meta name="twitter:description" content="{{ with index .Params.verses 0 }}{{ .text }}{{ end }}">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
