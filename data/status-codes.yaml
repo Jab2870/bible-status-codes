@@ -85,6 +85,9 @@
     text: The counsel of the LORD stands forever, the purposes of His heart to all generations.
 - code: 400
   message: Bad Request
+  verses:
+  - reference: Romans 3:23
+    text: "for all have sinned and fall short of the glory of God"
 - code: 401
   message: Unauthorized
   verses:
