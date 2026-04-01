@@ -167,6 +167,8 @@
 - code: 418
   message: I'm a Teapot
   verses:
+  - reference: John 2:7-9
+    text: "Jesus told the servants, 'Fill the jars with water.' So they filled them to the brim. 'Now draw some out,' He said, 'and take it to the master of the banquet.' They did so, and the master of the banquet tasted the water that had been turned into wine."
 - code: 421
   message: Misdirected Request
   verses:
