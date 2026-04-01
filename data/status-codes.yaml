@@ -219,6 +219,8 @@
 - code: 508
   message: Loop Detected
   verses:
+  - reference: Ezekiel 1:16
+    text: "Their workmanship looked like a wheel within a wheel."
 - code: 510
   message: Not Extended
   verses:
