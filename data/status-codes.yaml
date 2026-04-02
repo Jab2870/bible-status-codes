@@ -23,6 +23,8 @@
   verses:
   - reference: Isaiah 7:14
     text: "Therefore the Lord Himself will give you a sign: Behold, the virgin will be with child and give birth to a son, and will call Him Immanuel."
+- code: 104
+  message: Upload Resumption Supported
 - code: 200
   message: OK
   verses:
@@ -56,6 +58,12 @@
     text: Create in me a clean heart, O God, and renew a right spirit within me.
 - code: 206
   message: Partial Content
+- code: 207
+  message: Multi-Status
+- code: 208
+  message: Already Reported
+- code: 226
+  message: IM Used
 - code: 300
   message: Multiple Choices
   verses:
@@ -81,6 +89,8 @@
     text: Jesus Christ is the same yesterday and today and forever.
 - code: 305
   message: Use Proxy
+- code: 306
+  message: (Unused) - previously "Use Proxy"
 - code: 307
   message: Temporary Redirect
   verses:
@@ -188,14 +198,13 @@
   verses:
 - code: 425
   message: Too Early
-- code: 429
-  message: Too Many Requests
-  verses:
-
 - code: 426
   message: Upgrade Required
 - code: 428
   message: Precondition Required
+- code: 429
+  message: Too Many Requests
+  verses:
 - code: 431
   message: Request Header Fields Too Large
 - code: 451
@@ -220,6 +229,8 @@
 - code: 504
   message: Gateway Timeout
   verses:
+- code: 505
+  message: HTTP Version Not Supported
 - code: 506
   message: Variant Also Negotiates
   verses:
