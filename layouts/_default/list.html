@@ -70,14 +70,10 @@
     </style>
 </head>
 <body>
-    <h1>HTTP Bible</h1>
-    <p class="subtitle">Bible verses for HTTP status codes (<a href="./bsb-translation/">BSB translation</a>)</p>
+    {{ .Content }}
 
-    <p class="contribute"><a href="{{ .Site.Params.githubRepo }}">Please
-		contribute</a> if you can think of any verses for the missing codes.</p>
-    
 <ul class="status-list">
-    {{ range .Site.RegularPages }}
+    {{ range where .Site.RegularPages "Section" "code" }}
     <li>
         <a href="{{ .RelPermalink }}">
             <span class="code">{{ .Params.code }}</span>
@@ -86,7 +82,7 @@
             {{ if $firstVerse }}
                 <span class="verse-preview">"{{ $firstVerse.text }}"</span>
             {{ else }}
-                <span class="contribute">Contribute</span>
+                <span class="contribute"><a href="{{ "contributing" | relURL }}">Contribute</a></span>
             {{ end }}
         </a>
     </li>

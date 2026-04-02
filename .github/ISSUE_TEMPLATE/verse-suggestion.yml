@@ -1,0 +1,35 @@
+name: Submit a verse suggestion
+description: Suggest a Bible verse for an HTTP status code
+title: "[Suggestion] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: status-code
+    attributes:
+      label: HTTP Status Code
+      description: e.g., 404
+      placeholder: Enter the HTTP status code
+    validations:
+      required: true
+  - type: input
+    id: verse
+    attributes:
+      label: Bible Verse
+      description: Book, Chapter, and Verse (e.g., John 3:16) - please use the BSB translation
+      placeholder: e.g., John 3:16
+    validations:
+      required: true
+  - type: textarea
+    id: verse-text
+    attributes:
+      label: Full Verse Text
+      description: The complete verse text from the Berean Standard Bible
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Why this verse fits the status code
+      description: Explain the connection between the verse and the HTTP status code
+    validations:
+      required: false

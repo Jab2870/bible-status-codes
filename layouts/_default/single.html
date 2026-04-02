@@ -60,7 +60,10 @@
     </style>
 </head>
 <body>
+    {{ $hasH1 := or (strings.HasPrefix .Content "<h1") (strings.Contains .Content "<h1") }}
+    {{ if not $hasH1 }}
     <h1>{{ .Title }}</h1>
+    {{ end }}
     
     {{ .Content }}
     

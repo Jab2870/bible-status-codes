@@ -93,7 +93,7 @@
     {{ end }}
     
     {{ if or (not $verses) (eq (len $verses) 0) }}
-    <p class="contribute">No verse yet. <a href="{{ .Site.Params.githubRepo }}">Contribute one!</a></p>
+    <p class="contribute">No verse yet. <a href="{{ "contributing" | relURL }}">Contribute one!</a></p>
     {{ end }}
     
     <nav>
