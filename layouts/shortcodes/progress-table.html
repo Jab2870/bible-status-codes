@@ -1,0 +1,49 @@
+{{ $allPages := where .Site.RegularPages "Section" "code" }}
+
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+</style>
+
+<table>
+  <thead>
+      <tr>
+          <th>Category</th>
+          <th>Total</th>
+          <th>With Verses</th>
+          <th>Missing</th>
+      </tr>
+  </thead>
+  <tbody>
+  {{ range $categoryNum := seq 1 5 }}
+  {{ $cat := printf "%dxx" $categoryNum }}
+  {{ $catPages := where $allPages "Params.category" $cat }}
+  {{ $catTotal := len $catPages }}
+  {{ $catWithVerses := 0 }}
+  {{ range $catPages }}
+    {{ if .Params.verses }}
+      {{ $catWithVerses = add $catWithVerses 1 }}
+    {{ end }}
+  {{ end }}
+  {{ $catWithout := sub $catTotal $catWithVerses }}
+      <tr>
+          <td>{{ $cat }}</td>
+          <td>{{ $catTotal }}</td>
+          <td>{{ $catWithVerses }}</td>
+          <td>{{ $catWithout }}</td>
+      </tr>
+  {{ end }}
+  </tbody>
+</table>

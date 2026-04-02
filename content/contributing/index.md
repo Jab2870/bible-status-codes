@@ -17,3 +17,9 @@ If not, you can [create an issue](https://github.com/Jab2870/bible-status-codes/
    - The HTTP status code
    - The Bible verse (please use the BSB translation)
    - Any explanation for why this verse fits the status code
+
+## Progress
+
+{{< progress-overall >}}
+
+{{< progress-table >}}

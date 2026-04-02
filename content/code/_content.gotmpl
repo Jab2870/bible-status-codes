@@ -12,13 +12,16 @@
   {{ $verses := .verses }}
   {{ $justification := .justification }}
   
+  {{ $categoryNum := div $code 100 }}
+  {{ $category := printf "%dxx" $categoryNum }}
+  
   {{ $firstVerse := index $verses 0 }}
   {{ $verse := $firstVerse.text }}
   {{ $reference := $firstVerse.reference }}
   
   {{ $content := printf "# %s %s\n\n%s\n\n— %s (BSB)" $code $message $verse $reference }}
   {{ $contentDict := dict "mediaType" "text/markdown" "value" $content }}
-  {{ $params := dict "code" $code "message" $message "verse" $verse "reference" $reference "verses" $verses "justification" $justification }}
+  {{ $params := dict "code" $code "message" $message "category" $category "verse" $verse "reference" $reference "verses" $verses "justification" $justification }}
   {{ $page := dict
     "content" $contentDict
     "kind" "page"

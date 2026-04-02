@@ -1,0 +1,17 @@
+{{ $allPages := where .Site.RegularPages "Section" "code" }}
+{{ $total := len $allPages }}
+{{ $withVerses := 0 }}
+{{ $withoutVerses := 0 }}
+{{ range $allPages }}
+  {{ if .Params.verses }}
+    {{ $withVerses = add $withVerses 1 }}
+  {{ else }}
+    {{ $withoutVerses = add $withoutVerses 1 }}
+  {{ end }}
+{{ end }}
+
+<ul>
+<li><strong>Total status codes:</strong> {{ $total }}</li>
+<li><strong>With verses:</strong> {{ $withVerses }} ({{ div (mul $withVerses 100) $total }}%)</li>
+<li><strong>Missing verses:</strong> {{ $withoutVerses }} ({{ div (mul $withoutVerses 100) $total }}%)</li>
+</ul>
