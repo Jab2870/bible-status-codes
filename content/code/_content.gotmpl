@@ -15,11 +15,49 @@
   {{ $categoryNum := div $code 100 }}
   {{ $category := printf "%dxx" $categoryNum }}
   
-  {{ $firstVerse := index $verses 0 }}
-  {{ $verse := $firstVerse.text }}
-  {{ $reference := $firstVerse.reference }}
+  {{ $verse := "" }}
+  {{ $reference := "" }}
+  {{ if $verses }}
+    {{/* Make sure $verses is a fresh slice to avoid reference issues */}}
+    {{ $cleanVerses := slice }}
+    {{ range $v := $verses }}
+      {{ $cleanVerses = $cleanVerses | append $v }}
+    {{ end }}
+    {{ $verses = $cleanVerses }}
+    
+    {{ $firstVerse := index $verses 0 }}
+    {{ $verse = $firstVerse.text }}
+    {{ $reference = $firstVerse.reference }}
+    
+    {{/* Generate Open Bible URLs for each verse */}}
+    {{ $enrichedVerses := slice }}
+    {{ range $index, $v := $verses }}
+      {{ $ref := index $v "reference" }}
+      {{ $text := index $v "text" }}
+      {{ $justification := index $v "justification" }}
+      {{/* Extract book and chapter from reference (e.g., "Colossians 2:6" -> book="colossians", chapter="2") */}}
+      {{ $refParts := split $ref " " }}
+      {{ $book := index $refParts 0 }}
+      {{ $book = lower $book }}
+      {{ $book = replace $book " " "_" }}
+      {{ $rest := "" }}
+      {{ range $i := seq 1 (sub (len $refParts) 1) }}
+        {{ $part := index $refParts $i }}
+        {{ if gt $i 1 }}
+          {{ $rest = printf "%s %s" $rest $part }}
+        {{ else }}
+          {{ $rest = $part }}
+        {{ end }}
+      {{ end }}
+      {{ $chapter := replaceRE ":.*$" "" $rest }}
+      {{ $openBibleUrl := printf "https://openbible.com/bsb/%s/%s.htm" $book $chapter }}
+      {{ $verseDict := dict "text" $text "reference" $ref "justification" $justification "url" $openBibleUrl }}
+      {{ $enrichedVerses = $enrichedVerses | append $verseDict }}
+    {{ end }}
+    {{ $verses = $enrichedVerses }}
+  {{ end }}
   
-  {{ $content := printf "# %s %s\n\n%s\n\n— %s (BSB)" $code $message $verse $reference }}
+  {{ $content := printf "# %s %s\n\n%s\n\n- %s (BSB)" $code $message $verse $reference }}
   {{ $contentDict := dict "mediaType" "text/markdown" "value" $content }}
   {{ $params := dict "code" $code "message" $message "category" $category "verse" $verse "reference" $reference "verses" $verses "justification" $justification }}
   {{ $page := dict

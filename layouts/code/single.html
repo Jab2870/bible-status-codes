@@ -22,6 +22,9 @@
     <div class="verse-box">
         <p class="verse">"{{ .text }}"</p>
         <p class="reference">— {{ .reference }} (BSB)</p>
+        {{ with .url }}
+        <p class="verse-link"><a href="{{ . }}" target="_blank">View on Open Bible →</a></p>
+        {{ end }}
         {{ with .justification }}
         <p class="justification">{{ . }}</p>
         {{ end }}
